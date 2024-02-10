@@ -1,0 +1,130 @@
+@import './variables.module.scss';
+
+.grid {
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+@for $i from 1 through $nb-column-laptop {
+  .grid#{$i} {
+    flex-wrap: wrap;
+    display: flex;
+    flex-basis: 100%;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &.alignCenter>* {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+    }
+
+    &.justifyCenter>* {
+      display: flex;
+      justify-content: center;
+    }
+
+    >* {
+      flex: 0 1 auto;
+      width: calc(100% / #{$i} - #{$ie});
+    }
+
+    &.hasGutter {
+      margin-right: - $gutter-xs;
+      margin-left: - $gutter-xs;
+
+      >* {
+        margin-top: $gutter;
+        padding-right: $gutter-xs;
+        padding-left: $gutter-xs;
+
+        &:nth-child(-n + #{$i}) {
+          margin-top: 0;
+        }
+      }
+    }
+
+    @media (max-width: $desktop) {
+      @for $xl from 1 through $nb-column-desktop {
+        &.xl#{$xl} {
+          >* {
+            width: calc(100% / #{$xl} - #{$ie});
+          }
+
+          &.hasGutter>* {
+            &:nth-child(n) {
+              margin-top: $gutter;
+            }
+
+            &:nth-child(-n + #{$xl}) {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: $laptop) {
+      @for $lg from 1 through $nb-column-laptop {
+        &.lg#{$lg} {
+          >* {
+            width: calc(100% / #{$lg} - #{$ie});
+
+          }
+
+          &.hasGutter>* {
+            &:nth-child(n) {
+              margin-top: $gutter;
+            }
+
+            &:nth-child(-n + #{$lg}) {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: $tablet) {
+      @for $md from 1 through $nb-column-tablet {
+        &.md#{$md} {
+          >* {
+            width: calc(100% / #{$md} - #{$ie});
+          }
+
+          &.hasGutter>* {
+            &:nth-child(n) {
+              margin-top: $gutter;
+            }
+
+            &:nth-child(-n + #{$md}) {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: $mobile) {
+      @for $sm from 1 through $nb-column-mobile {
+        &.sm#{$sm} {
+          >* {
+            width: calc(100% / #{$sm} - #{$ie});
+          }
+
+          &.hasGutter>* {
+            &:nth-child(n) {
+              margin-top: $gutter;
+            }
+
+            &:nth-child(-n + #{$sm}) {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

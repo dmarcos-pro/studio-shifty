@@ -1,0 +1,28 @@
+@import './variables.module.scss';
+
+.carousel {
+    margin-top: $gutter-xl;
+    padding: $gutter-xl;
+    .containerCarousel {
+        overflow: hidden;
+        position: relative;
+    }
+    // .leftArrow, .rightArrow {
+    //     position: absolute;
+    //     width: 100px;
+    //     top: 50%;
+    //     transform: translateY(-50%) rotate(-45deg);
+    //     z-index: 2;
+    //     cursor: pointer;
+    //     &.disabled {
+    //         opacity: .2;
+    //         cursor: not-allowed;
+    //     }
+    // }
+    // .leftArrow {
+    //     left: 0;
+    // }
+    // .rightArrow {
+    //     right: 0;
+    // }
+}

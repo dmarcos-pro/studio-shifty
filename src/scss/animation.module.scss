@@ -1,0 +1,136 @@
+@import './variables.module.scss';
+
+.fade,
+.fadeUp,
+.fade3d,
+.fadeLeft,
+.fadeRight,
+.fromLeft {
+    visibility: hidden;
+}
+
+.animated {
+    &.fade,
+    &.fadeUp,
+    &.fadeRight,
+    &.fadeLeft,
+    &.fade3d,
+    &.fromLeft {
+        visibility: visible;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+    }
+    &.fade {
+        animation-name: fade;
+    }
+    &.fadeUp {
+        animation-name: fadeUp;
+    }
+    &.fadeRight {
+        animation-name: fadeRight;
+    }
+    &.fadeLeft {
+        animation-name: fadeLeft;
+    }
+    &.fade3d {
+        animation-name: fade3d;
+    }
+    &.fromLeft {
+        animation-name: fromLeft;
+    }
+    &.delay2 {
+        animation-delay: .2s;
+    }
+    &.delay4 {
+        animation-delay: .4s;
+    }
+    &.delay5 {
+        animation-delay: .5s;
+    }
+    &.delay6 {
+        animation-delay: .6s;
+    }
+    &.delay8 {
+        animation-delay: .8s;
+    }
+    &.delay10 {
+        animation-delay: 1s;
+    }
+    &.delay12 {
+        animation-delay: 1.2s;
+    }
+    &.delay15 {
+        animation-delay: 1.5s;
+    }
+    &.delay20 {
+        animation-delay: 2s;
+    }
+}
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 10%, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes fadeRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10%);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes fadeLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10%);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+@keyframes fade3d {
+    0% {
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        animation-timing-function: ease-in;
+        opacity: 0;
+    }
+    40% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        animation-timing-function: ease-in;
+    }
+    60% {
+        transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        opacity: 1;
+    }
+    80% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    }
+    100% {
+        transform: perspective(400px);
+    }
+}
+
+@keyframes fromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: none;
+    }
+}

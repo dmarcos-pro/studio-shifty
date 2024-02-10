@@ -1,0 +1,307 @@
+@import './variables.module.scss';
+
+.heroBanner {
+  background: linear-gradient(145deg, #F7D1EB 30%, #81BDDD 100%);
+
+  .main {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10rem;
+
+    .content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: $gutter;
+
+      .title {
+        @media (max-width: $laptop) {
+          text-align: center;
+        }
+      }
+
+      .picture {
+        @media (max-width: $laptop) {
+          display: none;
+        }
+
+        figure {
+          // width: 80%;
+          // display: table;
+          // margin: auto;
+          position: relative;
+
+          img:not(.mainPicture) {
+            position: absolute;
+            transform: translate(-50%, -50%);
+          }
+
+          .mainPicture {
+            width: 80%;
+            display: table;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+          }
+
+          .shape {
+            width: 100%;
+            top: 50%;
+            left: 45%;
+            animation: rotate 5s infinite ease-in-out;
+          }
+
+          .smokeReactor {
+            width: 125px;
+            top: 78%;
+            left: 16%;
+          }
+
+          .cloud1 {
+            width: 150px;
+            top: 15%;
+            left: 10%;
+            animation: move 5s infinite ease-in-out;
+          }
+
+          .cloud2 {
+            width: 120px;
+            top: 72%;
+            animation: move 8s infinite ease-in-out;
+            left: 80%;
+          }
+
+          .cloud3 {
+            width: 110px;
+            top: 0%;
+            animation: move 6s infinite ease-in-out;
+            left: 40%;
+          }
+
+          .cloud4 {
+            width: 80px;
+            top: 15%;
+            animation: move 7s infinite ease-in-out;
+            left: 70%;
+          }
+        }
+      }
+
+      .tips {
+        margin-top: $gutter;
+
+        >div {
+          @media (max-width: $mobile) {
+            &:first-child {
+              display: none;
+            }
+          }
+
+          >div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+              margin-right: $gutter-xs;
+            }
+          }
+        }
+
+        * {
+          font-size: 1.2rem;
+        }
+
+        span {
+          font-size: 1.5rem;
+          font-weight: bold;
+          display: block;
+        }
+      }
+    }
+
+  }
+
+  .bottom {
+    background-color: $offWhite;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    aside {
+      position: absolute;
+      bottom: $gutter;
+      left: $gutter;
+      z-index: 1;
+      padding: $gutter-xl;
+      background-color: $offWhite;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 40rem;
+      box-shadow: 5px 5px 10px rgba($blue, 40%);
+
+      @media (max-width: $laptop) {
+        display: none;
+      }
+
+      >*+* {
+        margin-top: $gutter-xl;
+      }
+
+      p {
+        font-weight: bold;
+        margin-bottom: $gutter;
+      }
+
+      .feedback {
+        display: flex;
+
+        >* {
+          margin-right: 5px;
+        }
+      }
+
+      .feedbackImage {
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        border-radius: 50%;
+        position: relative;
+        line-height: 50px;
+        text-align: center;
+        background-color: $blue;
+        color: $offWhite;
+        font-weight: bold;
+
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
+        }
+      }
+
+      .projectDetail {
+        margin-top: $gutter-xs;
+
+        >div:first-child {
+          display: flex;
+          justify-content: space-between;
+          text-transform: uppercase;
+          margin-bottom: 3px;
+
+          * {
+            font-size: 1rem;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .ref {
+      overflow: hidden;
+      margin-left: calc(40rem + $gutter);
+
+      @media (max-width: $laptop) {
+        margin-left: 0;
+      }
+
+      .counter {
+        padding: $gutter;
+        overflow: hidden;
+
+        >div {
+          position: relative;
+          display: flex;
+        }
+      }
+
+      p {
+        font-size: 1rem;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: $gutter;
+      }
+
+      img {
+        opacity: .4;
+      }
+    }
+  }
+
+  .image {
+    position: absolute;
+    height: 90%;
+    bottom: $gutter;
+    left: -50%;
+    transform: translateX(50%);
+    z-index: 1;
+  }
+}
+
+.heroBannerArticle {
+  position: relative;
+  overflow: hidden;
+
+  >* {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  figure {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    max-height: 90vh;
+    max-width: 50vw;
+    opacity: .7;
+  }
+
+  .article {
+    color: $offWhite;
+
+    .title {
+      padding: $gutter-xl $gutter;
+      width: 100%;
+      max-width: $tablet;
+
+      p {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(10px)
+  }
+
+  50% {
+    transform: translateY(0px)
+  }
+
+  100% {
+    transform: translateY(10px)
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(4deg)
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(0)
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(4deg)
+  }
+}
