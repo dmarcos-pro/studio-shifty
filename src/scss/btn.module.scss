@@ -13,31 +13,31 @@
   display: inline-flex;
   font-weight: bold;
 
-  @media (max-width: $tablet) {
+  @media (max-width: var(--tablet)) {
     padding: 1rem 1rem .9rem 1rem;
     font-size: 1rem;
   }
 
   +.btn {
-    margin-left: $gutter;
+    margin-left: var(--gutter);
   }
 
   &:hover {
-    color: $salmon;
-    border-color: $salmon;
+    color: var(--color_salmon);
+    border-color: var(--color_salmon);
 
     svg {
       animation: moveRight 1s ease-in-out infinite;
 
       path {
-        fill: $salmon;
-        stroke: $salmon;
+        fill: var(--color_salmon);
+        stroke: var(--color_salmon);
       }
     }
   }
 
   svg {
-    margin-left: $gutter-xs;
+    margin-left: var(--gutter-xs);
     position: relative;
     left: 0;
     transition: all .3s ease-in-out;
@@ -53,7 +53,7 @@ $color in $var-colorsBtn {
 }
 
 .small {
-  padding: 1rem 2rem .8rem 2rem;
+  padding: 1rem 1.3rem .8rem 2rem;
   font-size: 1rem;
 }
 
@@ -72,11 +72,11 @@ $color in $var-colorsBtn {
 }
 
 .remove {
-  background-color: $red;
-  color: #fff;
+  background-color: var(--color_red);
+  color: var(--color_white);
 }
 
 .add {
-  background-color: $blue;
-  color: #fff;
+  background-color: var(--color_blue);
+  color: var(--color_white);
 }

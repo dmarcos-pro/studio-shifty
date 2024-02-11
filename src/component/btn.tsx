@@ -3,7 +3,17 @@ import React from "react";
 // CSS
 import btn from '@scss/btn.module.scss';
 
-const Btn = (props) => {
+type Props = {
+    size?: string
+    color: string
+    icon?: boolean
+    noborder?: boolean
+    rotate?: boolean
+    url?: string
+    children: React.ReactNode
+}
+
+const Btn = (props: Props) => {
     let color = btn[`${props.color}`];
     let size = props.size ? btn[`${props.size}`] : '';
     let icon = props.icon ? true : false;

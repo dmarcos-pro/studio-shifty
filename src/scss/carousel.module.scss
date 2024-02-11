@@ -1,8 +1,8 @@
 @import './variables.module.scss';
 
 .carousel {
-    margin-top: $gutter-xl;
-    padding: $gutter-xl;
+    margin-top: var(--gutter-xl);
+    padding: var(--gutter-xl);
     .containerCarousel {
         overflow: hidden;
         position: relative;

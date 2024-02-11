@@ -6,7 +6,7 @@
     "tag": "Pourquoi nous choisir",
     "welcome": "Découvrez le studio Shifty",
     "short": "Shifty, le studio spécialisé en stratégie de marque, identité visuelle et projets&nbsp;digitaux.",
-    "desc": "<p>Le studio Shifty propose des <b>solutions personnalisées</b> pour répondre à vos besoins grâce à une approche sur mesure. Devenez notre <b>partenaire de confiance</b> pour profiter de services de qualité, qui vous aideront à <b>atteindre vos objectifs</b> de croissance et de fidélisation.</p>",
+    "desc": "<p>Le studio Shifty vous apporte son <b>expertise</b> dans la transformation&nbsp;digitale de votre marque. Grâce à notre <b>collaboration</b>, vous bénéficiez d'un accompagnement personnalisé pour atteindre efficacement vos <b>objectifs</b> de croissance et de fidélisation</p>",
     "cta": "Découvrir le studio",
     "story": {
       "title": "Le studio",
@@ -71,10 +71,27 @@
         "id": "identite-visuelle",
         "name": "Identité visuelle",
         "category": "Branding",
-        "link": "/services/identite-visuelle",
         "banner": {
           "title": "Offrez-vous une image de marque mémorable !",
-          "resume": "<Avec>Avec l'expertise en branding du studio Shifty, votre nouvelle identité est alignée sur vos valeurs et votre activité&nbsp;!</p>",
+          "resume": "<p>Avec l'expertise en branding du studio Shifty, votre nouvelle identité est alignée sur vos valeurs et votre activité&nbsp;!</p>",
+          "picture": {
+            "type": "video",
+            "url": "brand-identity.mp4",
+            "name": "Graphiste"
+          }
+        },
+        "content": [{
+          "title": "Révéler le meilleur de votre marque pour la rendre visible, unique et performante&nbsp;!",
+          "text": "<p>Pour définir votre marque, améliorer votre notoriété et accroître votre visibilité, une identité visuelle forte est incontournable. Ancrer votre image de marque dans votre domaine est essentiel pour vous démarquer de la concurrence.</p><p>Portée par une forte identité visuelle, vous serez en mesure de transmettre des messages cohérents et compréhensibles pour vous façonner, dans l’esprit de vos (futurs) clients, une image solide et pérenne sur le long terme.</p>"
+        }]
+      },
+      {
+        "id": "developpement-web",
+        "name": "Développement web",
+        "category": "Digital",
+        "banner": {
+          "title": "Offrez-vous une image de marque mémorable !",
+          "resume": "<p>Avec l'expertise en branding du studio Shifty, votre nouvelle identité est alignée sur vos valeurs et votre activité&nbsp;!</p>",
           "picture": {
             "type": "video",
             "url": "brand-identity.mp4",
@@ -87,25 +104,40 @@
         }]
       },
       {
-        "id": "developpement-web",
-        "name": "Développement web",
-        "category": "Digital",
-        "link": "/services/developpement-web",
-        "resume": "<p>Texte 2</p>"
-      },
-      {
         "id": "social-media",
         "name": "Social Media",
         "category": "Communication",
-        "link": "/services/social-media",
-        "resume": "<p>Texte 3</p>"
+        "banner": {
+          "title": "Offrez-vous une image de marque mémorable !",
+          "resume": "<p>Avec l'expertise en branding du studio Shifty, votre nouvelle identité est alignée sur vos valeurs et votre activité&nbsp;!</p>",
+          "picture": {
+            "type": "video",
+            "url": "brand-identity.mp4",
+            "name": "Graphiste"
+          }
+        },
+        "content": [{
+          "title": "Révéler le meilleur de votre marque pour la rendre visible, unique et performante&nbsp;!",
+          "text": "<p>Pour définir votre marque et améliorer votre notoriété et accroître votre visibilité, une identité visuelle forte est incontournable. Ancrer votre image de marque dans votre domaine est essentiel pour vous démarquer de la concurrence.</p><p>Portée par une forte identité visuelle, vous serez en mesure de transmettre des messages cohérents et compréhensibles pour vous façonner, dans l’esprit de vos (futurs) clients, une image solide et pérenne sur le long terme.</p>"
+        }]
       },
       {
         "id": "motion-design",
         "name": "Motion Design",
         "category": "Photo & Video",
-        "link": "/services/motion-design",
-        "resume": "<p>Texte 4</p>"
+        "banner": {
+          "title": "Offrez-vous une image de marque mémorable !",
+          "resume": "<p>Avec l'expertise en branding du studio Shifty, votre nouvelle identité est alignée sur vos valeurs et votre activité&nbsp;!</p>",
+          "picture": {
+            "type": "video",
+            "url": "brand-identity.mp4",
+            "name": "Graphiste"
+          }
+        },
+        "content": [{
+          "title": "Révéler le meilleur de votre marque pour la rendre visible, unique et performante&nbsp;!",
+          "text": "<p>Pour définir votre marque et améliorer votre notoriété et accroître votre visibilité, une identité visuelle forte est incontournable. Ancrer votre image de marque dans votre domaine est essentiel pour vous démarquer de la concurrence.</p><p>Portée par une forte identité visuelle, vous serez en mesure de transmettre des messages cohérents et compréhensibles pour vous façonner, dans l’esprit de vos (futurs) clients, une image solide et pérenne sur le long terme.</p>"
+        }]
       }
     ]
   },

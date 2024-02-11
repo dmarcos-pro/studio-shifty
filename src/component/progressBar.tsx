@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 
 import common from '@scss/common.module.scss';
 
-const ProgressBar = (props) => {
+type Props = {
+	start: number
+	end: number
+	color: string
+}
+
+const ProgressBar = (props: Props) => {
 	const { start, end } = props;
 
 	const [currentMinutes, setCurrentMinutes] = useState(start);

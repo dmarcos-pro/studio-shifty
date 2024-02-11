@@ -1,6 +1,11 @@
 import React from "react";
 
-const Icon = (props) => {
+type Props = {
+    value: string
+    children?: React.ReactNode
+}
+
+const Icon = (props: Props) => {
     const icon = props.value;
     return (
         <i>

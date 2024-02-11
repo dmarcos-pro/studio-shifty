@@ -1,54 +1,61 @@
 "use client"
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react"
 
 // CONTENT JSON
-import data from '../content.json';
+import data from '../content.json'
 
 // Module
-import Btn from "@component/btn";
+import Btn from "@component/btn"
 
 // CSS 
-import common from '@scss/common.module.scss';
-import hp from '@scss/homepage.module.scss';
-import animation from '@scss/animation.module.scss';
+import common from '@scss/common.module.scss'
+import hp from '@scss/homepage.module.scss'
+import animation from '@scss/animation.module.scss'
 
+type RefObject<T> = React.RefObject<T>
+
+type Refs = {
+    box: RefObject<HTMLDivElement>
+    cta: RefObject<HTMLDivElement>
+}
 
 const Presentation = () => {
 
     const [isVisible, setIsVisible] = useState({
         box: false,
         cta: false
-    });
+    })
 
-    const ref = {
-        box: useRef(null),
-        cta: useRef(null),
-    };
+    const ref: Refs = {
+        box: useRef<HTMLDivElement>(null),
+        cta: useRef<HTMLDivElement>(null),
+    }
 
-    const inView = (elementRef) => {
+    const inView = (elementRef: React.RefObject<HTMLElement>) => {
         if (elementRef.current) {
-            const boundingBox = elementRef.current.getBoundingClientRect();
-            return boundingBox.top < window.innerHeight - 150 && boundingBox.bottom >= 0;
+            const boundingBox = elementRef.current.getBoundingClientRect()
+            return boundingBox.top < window.innerHeight - 150 && boundingBox.bottom >= 0
         }
-        return false;
-    };
+        return false
+    }
 
     useEffect(() => {
         const handleScroll = () => {
             setIsVisible((prev) => ({
                 ...prev,
-                box: inView(ref.box),
-                cta: inView(ref.cta),
-            }));
-        };
+                box: ref.box.current ? inView(ref.box) : false,
+                cta: ref.box.current ? inView(ref.cta) : false,
+            }))
+        }
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll)
 
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll)
 
-    }, []);
+    }, [])
 
-    const studioItem = data.navigation.find(item => item.id === 'studio');
+    const studioItem = data.navigation.find(item => item.id === 'studio')
+    const studioLink = studioItem?.link ?? ""
 
     return (
         <section className={`${hp.presentation}`}>
@@ -63,7 +70,7 @@ const Presentation = () => {
                         className={`${common.boxCta} ${animation.fadeUp} ${isVisible.cta ? animation.animated : ''}`}
                         ref={ref.cta}
                     >
-                        <Btn color="blue" rotate size="large" url={`${studioItem.link}`}>
+                        <Btn color="blue" rotate size="large" url={`${studioLink}`}>
                             {data.about_us.cta}
                         </Btn>
                     </div>
@@ -71,6 +78,6 @@ const Presentation = () => {
             </div>
         </section>
     )
-};
+}
 
-export default Presentation;
+export default Presentation

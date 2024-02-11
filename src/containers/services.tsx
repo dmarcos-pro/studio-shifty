@@ -1,58 +1,49 @@
 "use client"
-import React, { useState, useRef, useEffect } from "react";
-// import { useSwipeable } from 'react-swipeable';
-import data from '../content.json';
+import React, { useState, useRef, useEffect, RefObject } from "react"
+// import { useSwipeable } from 'react-swipeable'
+import data from '../content.json'
 
-import Service from "@component/service";
-import Btn from "@component/btn";
-import Modal from './modal';
-import Simulator from './simulator/simulator';
+import Service from "@component/service"
+// import Modal from './modal'
 
 // CSS 
-import common from '@scss/common.module.scss';
-import hp from '@scss/homepage.module.scss';
-import grid from '@scss/grid.module.scss';
-import animation from '@scss/animation.module.scss';
-
+import common from '@scss/common.module.scss'
+import hp from '@scss/homepage.module.scss'
+import grid from '@scss/grid.module.scss'
+import animation from '@scss/animation.module.scss'
 
 const Services = () => {
 
     const [isVisible, setIsVisible] = useState({
         title: false
-    });
+    })
 
     const ref = {
         title: useRef(null),
-    };
+    }
 
-    const inView = (elementRef) => {
+    const inView = (elementRef: RefObject<HTMLElement>) => {
         if (elementRef.current) {
-            const boundingBox = elementRef.current.getBoundingClientRect();
-            return boundingBox.top < window.innerHeight - 150 && boundingBox.bottom >= 0;
+            const boundingBox = elementRef.current.getBoundingClientRect()
+            return boundingBox.top < window.innerHeight - 150 && boundingBox.bottom >= 0
         }
-        return false;
-    };
+        return false
+    }
 
     useEffect(() => {
         const handleScroll = () => {
             setIsVisible((prev) => ({
                 ...prev,
                 title: inView(ref.title)
-            }));
-        };
+            }))
+        }
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll)
 
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll)
 
-    }, []);
+    }, [])
 
-    const [openedModal, setOpenedModal] = useState(false);
-    const [selectedId, setSelectedId] = useState(null);
-
-    const openModal = () => {
-        setOpenedModal(true);
-    }
     return (
         <section className={`${hp.services}`}>
             <div className={`${common.container} ${hp.serviceContainer}`}>
@@ -68,31 +59,19 @@ const Services = () => {
                     {data.services.offer.map((service, index) => {
                         return (
                             <Service
-                                key={`offer-${service.name}`}
+                                key={`offer-${service.id}`}
                                 category={service.category}
                                 title={service.name}
-                                link={service.link}
+                                id={service.id}
                                 index={index}
                             />
                         )
                     })}
                 </div>
-                <div
-                    className={`${common.boxCta} ${common.txtCenter}`}
-                    onClick={(e) => { openModal(); }}
-                >
-                    <Btn color="blue">
-                        Faire une première estimation de son projet
-                    </Btn>
-                </div>
+
             </div>
-            {openedModal && (
-                <Modal update={setOpenedModal}>
-                    <Simulator />
-                </Modal>
-            )}
         </section>
     )
-};
+}
 
-export default Services;
+export default Services

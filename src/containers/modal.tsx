@@ -2,7 +2,12 @@ import React from "react";
 
 import hp from '@scss/homepage.module.scss';
 
-const Modal = (props) => {
+type Props = {
+  update: (boolean: boolean) => void
+  children: React.ReactNode
+}
+
+const Modal = (props: Props) => {
   const closeModal = () => {
     props.update(false);
   }
@@ -21,6 +26,6 @@ const Modal = (props) => {
       </div>
     </div>
   )
-};
+}
 
-export default Modal;
+export default Modal

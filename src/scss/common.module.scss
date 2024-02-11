@@ -2,9 +2,9 @@
 
 .container {
   width: 100%;
-  max-width: $desktop;
+  max-width: var(--desktop);
   margin: auto;
-  padding: 0 $gutter;
+  padding: 0 var(--gutter);
   position: relative;
 
   +.container {
@@ -20,36 +20,36 @@
 
 .containerXs {
   width: 100%;
-  max-width: $laptop;
+  max-width: var(--laptop);
   margin: auto;
 }
 
 .sectionXs {
-  padding: 8rem $gutter;
+  padding: 8rem var(--gutter);
 }
 
 .sectionXl {
-  padding: 15rem $gutter;
+  padding: 15rem var(--gutter);
 }
 
 .boxCtaXl {
-  margin-top: $gutter-xl;
+  margin-top: var(--gutter-xl);
 }
 
 .boxCta {
-  margin-top: $gutter;
+  margin-top: var(--gutter);
 }
 
 .pLeft {
-  padding-left: $gutter !important;
+  padding-left: var(--gutter) !important;
 }
 
 .pLeftXl {
-  padding-left: $gutter-xl !important;
+  padding-left: var(--gutter-xl) !important;
 }
 
 .pLeftXs {
-  padding-left: $gutter-xs !important;
+  padding-left: var(--gutter-xs) !important;
 }
 
 .txtCenter {
@@ -61,9 +61,9 @@
 }
 
 .bgOrange {
-  background: $orange;
-  background: radial-gradient(circle, lighten($orange, 5%) 20%, $orange 70%);
-  color: $white;
+  background: var(--color_orange);
+  // background: radial-gradient(circle, lighten(var(--color_orange), 5%) 20%, var(--color_orange) 70%);
+  color: var(--color_white);
 
   b {
     background-color: rgba(255, 255, 255, 0.2);
@@ -73,10 +73,10 @@
 }
 
 .bgBlue {
-  background: $purple;
-  background: radial-gradient(circle, lighten($purple, 5%) 20%, $purple 70%);
-  color: $white;
-  padding: $gutter;
+  background: var(--color_purple);
+  //background: radial-gradient(circle, lighten(var(--color_purple), 5%) 20%, var(--color_purple) 70%);
+  color: var(--color_white);
+  padding: var(--gutter);
 }
 
 .boxRadius {
@@ -86,7 +86,7 @@
 .tag {
   text-transform: uppercase;
   font-size: 1.2rem;
-  color: $grey;
+  color: var(--color_grey);
 }
 
 @each $class,
@@ -126,11 +126,11 @@ $color in $var-colors {
   z-index: 99;
   width: 10px;
   height: 10px;
-  background-color: $salmon;
+  background-color: var(--color_salmon);
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  border: 1px solid $salmon;
+  border: 1px solid var(--color_salmon);
   transition: width 0.3s ease-in-out 0s, height 0.3s ease-in-out 0s;
 }
 
@@ -138,7 +138,7 @@ $color in $var-colors {
   .mouse {
     width: 30px;
     height: 30px;
-    background: radial-gradient($salmon 5%, transparent 5%);
+    background: radial-gradient(rgb(230, 113, 113) 5%, transparent 5%);
   }
 }
 
@@ -156,7 +156,7 @@ $color in $var-colors {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-image: url(#{$path-img}/search-icon.png);
+      background-image: url("/images/search-icon.png");
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -169,7 +169,7 @@ $color in $var-colors {
   width: 100%;
   height: 8px;
   border-radius: 10px;
-  background-color: $beige;
+  background-color: var(--color_beige);
 
   span {
     border-radius: 10px;

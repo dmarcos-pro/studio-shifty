@@ -15,16 +15,16 @@
       flex: 1;
       display: flex;
       align-items: center;
-      padding: $gutter;
+      padding: var(--gutter);
 
       .title {
-        @media (max-width: $laptop) {
+        @media (max-width: var(--laptop)) {
           text-align: center;
         }
       }
 
       .picture {
-        @media (max-width: $laptop) {
+        @media (max-width: var(--laptop)) {
           display: none;
         }
 
@@ -91,10 +91,10 @@
       }
 
       .tips {
-        margin-top: $gutter;
+        margin-top: var(--gutter);
 
         >div {
-          @media (max-width: $mobile) {
+          @media (max-width: var(--mobile)) {
             &:first-child {
               display: none;
             }
@@ -106,7 +106,7 @@
             justify-content: center;
 
             svg {
-              margin-right: $gutter-xs;
+              margin-right: var(--gutter-xs);
             }
           }
         }
@@ -126,34 +126,34 @@
   }
 
   .bottom {
-    background-color: $offWhite;
+    background-color: var(--color_offWhite);
     display: flex;
     align-items: center;
     position: relative;
 
     aside {
       position: absolute;
-      bottom: $gutter;
-      left: $gutter;
+      bottom: var(--gutter);
+      left: var(--gutter);
       z-index: 1;
-      padding: $gutter-xl;
-      background-color: $offWhite;
+      padding: var(--gutter-xl);
+      background-color: var(--color_offWhite);
       border-radius: 10px;
       width: 100%;
       max-width: 40rem;
-      box-shadow: 5px 5px 10px rgba($blue, 40%);
+      box-shadow: 5px 5px 10px rgba(rgb(67, 64, 82), 40%);
 
-      @media (max-width: $laptop) {
+      @media (max-width: var(--laptop)) {
         display: none;
       }
 
       >*+* {
-        margin-top: $gutter-xl;
+        margin-top: var(--gutter-xl);
       }
 
       p {
         font-weight: bold;
-        margin-bottom: $gutter;
+        margin-bottom: var(--gutter);
       }
 
       .feedback {
@@ -172,8 +172,8 @@
         position: relative;
         line-height: 50px;
         text-align: center;
-        background-color: $blue;
-        color: $offWhite;
+        background-color: var(--color_blue);
+        color: var(--color_offWhite);
         font-weight: bold;
 
         img {
@@ -186,7 +186,7 @@
       }
 
       .projectDetail {
-        margin-top: $gutter-xs;
+        margin-top: var(--gutter-xs);
 
         >div:first-child {
           display: flex;
@@ -204,14 +204,14 @@
 
     .ref {
       overflow: hidden;
-      margin-left: calc(40rem + $gutter);
+      margin-left: calc(40rem + var(--gutter));
 
-      @media (max-width: $laptop) {
+      @media (max-width: var(--laptop)) {
         margin-left: 0;
       }
 
       .counter {
-        padding: $gutter;
+        padding: var(--gutter);
         overflow: hidden;
 
         >div {
@@ -224,7 +224,7 @@
         font-size: 1rem;
         text-transform: uppercase;
         text-align: center;
-        margin-bottom: $gutter;
+        margin-bottom: var(--gutter);
       }
 
       img {
@@ -236,7 +236,7 @@
   .image {
     position: absolute;
     height: 90%;
-    bottom: $gutter;
+    bottom: var(--gutter);
     left: -50%;
     transform: translateX(50%);
     z-index: 1;
@@ -264,12 +264,12 @@
   }
 
   .article {
-    color: $offWhite;
+    color: var(--color_offWhite);
 
     .title {
-      padding: $gutter-xl $gutter;
+      padding: var(--gutter-xl) var(--gutter);
       width: 100%;
-      max-width: $tablet;
+      max-width: var(--tablet);
 
       p {
         font-size: 2rem;

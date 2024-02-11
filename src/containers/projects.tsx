@@ -10,9 +10,23 @@ import common from '@scss/common.module.scss'
 import animation from '@scss/animation.module.scss'
 import hp from '@scss/homepage.module.scss'
 
+
+type Project = {
+  id: string
+  brand: string
+  tag: string[]
+  images: {
+    miniature: string
+  }
+}
+
+type Refs = {
+  title: React.RefObject<HTMLDivElement>;
+}
+
 const Projects = () => {
-  const [activeInterval, setActiveInterval] = useState(true)
-  const [step, setStep] = useState({ id: null, i: null })
+  const [activeInterval, setActiveInterval] = useState<boolean>(true)
+  const [step, setStep] = useState<{ id: string; i: number }>({ id: "", i: 0 })
   const maxStep = data.projects.all.length - 1
 
   useEffect(() => {
@@ -24,7 +38,7 @@ const Projects = () => {
   }, [data.projects.all])
 
   useEffect(() => {
-    let interval
+    let interval: NodeJS.Timeout
     if (activeInterval) {
       interval = setInterval(() => {
         setStep((prevStep) => {
@@ -61,7 +75,7 @@ const Projects = () => {
       setStep({ id: prevStepId, i: step.i - 1 })
     }
   }
-  const selectProject = (index) => {
+  const selectProject = (index: number) => {
     setActiveInterval(false)
     const stepId = data.projects.all[index].id
     setStep({ id: stepId, i: index })
@@ -85,12 +99,11 @@ const Projects = () => {
   const [isVisible, setIsVisible] = useState({
     title: false,
   })
-
-  const ref = {
-    title: useRef(null),
+  const ref: Refs = {
+    title: useRef<HTMLDivElement>(null),
   }
 
-  const inView = (elementRef) => {
+  const inView = (elementRef: React.RefObject<HTMLElement>) => {
     if (elementRef.current) {
       const boundingBox = elementRef.current.getBoundingClientRect()
       return boundingBox.top < window.innerHeight - 150 && boundingBox.bottom >= 0
@@ -131,9 +144,7 @@ const Projects = () => {
               <div
                 key={`project-title-${index}`}
                 className={`${hp.projectsItem} ${isShow ? hp.show : ''}`}
-                onClick={() => {
-                  selectProject(index)
-                }}
+                onClick={() => { selectProject(index) }}
               >
                 <span className={`${step.i === index ? hp.active : ''}`}>{item.brand}</span>
               </div>

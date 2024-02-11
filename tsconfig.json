@@ -26,7 +26,9 @@
       "@/*": [
         "./src/*"
       ],
-      "@component/*": ["./src/component/*"]
+      "@component/*": ["./src/component/*"],
+      "@container/*": ["./src/containers/*"],
+      "@type/*": ["./src/type/*"]
     }
   },
   "include": [

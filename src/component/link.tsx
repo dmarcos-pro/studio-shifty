@@ -4,7 +4,13 @@ import { useRouter } from 'next/router'
 // CSS
 import cta from '@scss/link.module.scss';
 
-const Link = (props: any) => {
+type Props = {
+    default?: boolean
+    url: string
+    children: React.ReactNode
+}
+
+const Link = (props: Props) => {
     const defaultLink = props.default ? true : false;
     return (
         <a href={`${props.url}`} className={defaultLink ? "" : `${cta.link} link`}>

@@ -1,34 +1,39 @@
 @import './variables.module.scss';
 
 .link {
-    text-decoration: none;
-    letter-spacing: .5px;
-    position: relative;
-    transition: color .3s ease-in-out 0s;
-    color: $black;
-    @at-root {
-        header & {
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            display: block;
-        }
+  text-decoration: none;
+  letter-spacing: .5px;
+  position: relative;
+  transition: color .3s ease-in-out 0s;
+  color: var(--color_black);
+
+  @at-root {
+    header & {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      display: block;
     }
-    @at-root {
-        footer & {
-            color: $white;
-            display: block;
-            padding: 5px 0;
-            font-size: 1.2rem;
-            &:hover {
-                color: lighten($purple, 60%);
-            }
-        }
+  }
+
+  @at-root {
+    footer & {
+      color: var(--color_white);
+      display: block;
+      padding: 5px 0;
+      font-size: 1.2rem;
+
+      &:hover {
+        color: lighten(rgb(37, 33, 55), 60%);
+      }
     }
-    &:hover {
-        color: $salmon;
-        &::before {
-            height: 2px;
-        }
+  }
+
+  &:hover {
+    color: var(--color_salmon);
+
+    &::before {
+      height: 2px;
     }
+  }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head'
 
+
 type Props = {
   children: React.ReactNode;
 }
