@@ -1,6 +1,6 @@
 "use client"
-import React, { useState, useEffect, useRef } from "react";
-import data from '../content.json';
+import React, { useState, useEffect, useRef } from "react"
+import data from '../content.json'
 
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/router'
@@ -10,12 +10,9 @@ import Link from 'next/link'
 import Btn from '@component/btn'
 import Icon from '@component/icon'
 
-// IMAGE
-import logo from '@images/logo.png'
-
 // CSS
 import styles from '@scss/header.module.scss'
-import cta from '@scss/link.module.scss';
+import cta from '@scss/link.module.scss'
 
 type SubMenuItem = {
   name: string
@@ -45,20 +42,20 @@ const Header = () => {
     width: null,
     size: null,
     items: []
-  });
+  })
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY !== 0 ? true : false)
-      let windowHeight = document.body.offsetHeight - window.innerHeight
-      let positionScroll = (window.scrollY / windowHeight) * 100
+      const windowHeight = document.body.offsetHeight - window.innerHeight
+      const positionScroll = (window.scrollY / windowHeight) * 100
       setScrollbar(positionScroll)
       setSubMenu(prevSubMenu => ({ ...prevSubMenu, active: false }))
-    };
+    }
     window.addEventListener("scroll", handleScroll)
     const updateDevice = () => {
       setDesktop(window.innerWidth > 768 ? true : false)
-    };
+    }
     updateDevice()
     window.addEventListener('resize', updateDevice)
 
@@ -69,7 +66,6 @@ const Header = () => {
   }, [])
 
   const navigationItems = data.navigation.filter(item => item.category.includes('navigation'))
-  const contactItems = data.navigation.filter(item => item.id.includes('contact'))
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
@@ -115,11 +111,6 @@ const Header = () => {
       className={`${styles.header} ${!desktop ? styles.responsive : ''} ${scrolled ? styles.headerScrolled : ''}`}
       ref={headerRef}
     >
-      <figure className={styles.logo}>
-        <Link href="/" className="link">
-          <img src={logo.src} alt={`${data.name}`} />
-        </Link>
-      </figure>
       <nav className={menuOpen ? styles.navOpen : ''}>
         {navigationItems.map((item, index) => {
           return (
@@ -167,22 +158,13 @@ const Header = () => {
           </div>
         )}
       </nav>
-      <div>
-        {contactItems.map((item, index) => {
-          return (
-            <React.Fragment key={`navHeader-${index}`}>
-              <Btn size="small" icon color="blue" url={`${item.link}`}>
-                {item.name}
-              </Btn>
-            </React.Fragment>
-          )
-        })}
-        {!desktop && (
+      {!desktop && (
+        <div>
           <div className={styles.menu} onClick={() => { toggleMenu(); }}>
             <Icon value="menu" />
           </div>
-        )}
-      </div>
+        </div>
+      )}
       <div className={styles.scrollBar}>
         <span style={{ width: scrollbar + '%' }}></span>
       </div>

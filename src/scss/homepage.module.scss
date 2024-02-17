@@ -34,7 +34,7 @@
 
     .serviceItem a {
       padding: calc(var(--gutter) * 1.5);
-      background-color: #fff;
+      border: 1px solid var(--color-grey);
       position: relative;
       min-height: 180px;
       display: flex;
@@ -45,12 +45,11 @@
       border-radius: 10px;
 
       &:hover {
-        box-shadow: 3px 3px 10px 0 lighten(rgb(170, 170, 170), 10%);
 
         i {
           svg path {
-            fill: var(--color_salmon);
-            stroke: var(--color_salmon);
+            fill: var(--color-salmon);
+            stroke: var(--color-salmon);
           }
         }
       }
@@ -107,8 +106,8 @@
     max-width: var(--mobile);
     width: 100%;
     border-radius: 10px;
-    background-color: var(--color_white);
-    box-shadow: 0 0 10px 0 var(--color_grey);
+    background-color: var(--color-white);
+    box-shadow: 0 0 10px 0 var(--color-grey);
     padding: var(--gutter-xl);
   }
 }
@@ -121,209 +120,10 @@
   }
 
   i svg path {
-    fill: var(--color_grey);
-    stroke: var(--color_grey);
+    fill: var(--color-grey);
+    stroke: var(--color-grey);
   }
 }
-
-// .projects {
-//     margin: 10rem 0;
-//     padding-left:var(--gutter);
-//     padding-right:var(--gutter);
-//     color: $offWhite;
-//     @media (max-width: var(--tablet)) {
-//         margin-top: 0;
-//         margin-bottom: var(--gutter-xl);
-//     }
-//     .projectsContent {
-//         display: flex;
-//         margin-top: 5rem;
-//         position: relative;
-//         @media (max-width: var(--tablet)) {
-//             margin-top: var(--gutter-xl);
-//         }
-//         .projectsDesc {
-//             flex: 1;
-//             margin-right: var(--gutter-xl);
-//             position: relative;
-//             @media (max-width: var(--laptop)) {
-//                 display: flex;
-//                 flex-direction: column-reverse;
-//             }
-//             @media (max-width: var(--mobile)) {
-//                 margin-right: 0;
-//                 text-align: center;
-//             }
-//             .projectsTitle {
-//                 position: absolute;
-//                 top: 0;
-//                 left: 0;
-//                 width: 50%;
-//                 z-index: 1;
-//                 @media (max-width: var(--desktop)) {
-//                     width: 80%;
-//                     left: 0%;
-//                 }
-//                 @media (max-width: var(--laptop)) {
-//                     position: initial;
-//                     width: 100%;
-//                     margin-top: var(--gutter);
-//                 }
-//                 > div span, > div h3 {
-//                     display: none;
-//                 }
-//                 h3 {
-//                     font-size: 6rem;
-//                     color: $offWhite;
-//                     text-shadow: 4px 4px 0 $purple;
-//                     @media (max-width: var(--laptop)) {
-//                         font-size: 3rem;
-//                         line-height: 1.4;
-//                         margin-top: var(--gutter-xs);
-//                         letter-spacing: 1px;
-//                         text-shadow: none;
-//                     }
-//                     @media (max-width: var(--mobile)) {
-//                         font-weight: normal;
-//                         font-size: 2rem;
-//                     }
-//                 }
-//                 .active {
-//                     display: block;
-//                 }
-//             }
-//             .projectsMini {
-//                 float: right;
-//                 width: 100%;
-//                 max-width: 70%;
-//                 height: 500px;
-//                 overflow: hidden;
-//                 border-radius: 10px;
-//                 // transform: rotate(3deg);
-//                 // box-shadow: 5px 5px 0 0 lighten($purple, 2%);
-//                 @media (max-width: var(--desktop)) {
-//                     max-width: 80%;
-//                 }
-//                 @media (max-width: var(--laptop)) {
-//                     max-width: 100%;
-//                 }
-//                 @media (max-width: var(--tablet)) {
-//                     height: 300px;
-//                 }
-//                 div {
-//                     width: 100%;
-//                     position: relative;
-//                     height: 100%;
-//                     top: 0;
-//                     transition: all .5s ease-in-out 0s;
-//                 }
-//                 figure {
-//                     height: 100%;
-//                     width: 100%;
-//                     position: relative;
-//                     background-position: center center;
-//                     background-repeat: no-repeat;
-//                     background-size: cover;
-//                 }
-//                 .projectsTag {
-//                     text-transform: uppercase;
-//                     font-size: 1rem;
-//                     position: absolute;
-//                     bottom: var(--gutter);
-//                     left: var(--gutter);
-//                     span {
-//                         padding: 5px;
-//                     }
-//                 }
-//             }
-//             .previous {
-//                 position: absolute;
-//                 bottom: var(--gutter);
-//                 left: var(--gutter);
-//                 font-size: 1rem;
-//                 color: $offWhite;
-//                 opacity: .5;
-//                 @media (max-width: var(--laptop)) {
-//                     position: static;
-//                     margin-bottom: var(--gutter-xs);
-//                 }
-//                 @media (max-width: var(--mobile)) {
-//                     text-align: left;
-//                 }
-//                 &:hover {
-//                     opacity: 1;
-//                 }
-//                 i {
-//                     display: inline-block;
-//                     transform: rotate(180deg);
-//                     position: relative;
-//                     top: -1px;
-//                     margin-right: 5px;
-//                 }
-//             }
-//         }
-//         .projectsNext {
-//             overflow: hidden;
-//             width: 100px;
-//             height: 100px;
-//             opacity: .3;
-//             position: relative;
-//             border: 1px solid $offWhite;
-//             cursor: pointer;
-//             @media (max-width: var(--laptop)) {
-//                 margin-top: var(--gutter);
-//                 width: 100px;
-//                 height: 100px;
-//             }
-//             @media (max-width: var(--mobile)) {
-//                 display: none;
-//             }
-//             div {
-//                 width: 100%;
-//                 position: relative;
-//                 z-index: 1;
-//                 height: 100%;
-//                 top: 0;
-//                 transition: all .5s ease-in-out 0s;
-//             }
-//             figure {
-//                 height: 100%;
-//                 min-height: 100%;
-//                 width: 100%;
-//                 background-position: center center;
-//                 background-repeat: no-repeat;
-//                 background-size: cover;
-//             }
-//             span {
-//                 position: absolute;
-//                 top: 50%;
-//                 left: 50%;
-//                 transform: translate(-50%, -50%);
-//                 font-size: 1.2rem;
-//             }
-//         }
-//         .next {
-//             margin-top: var(--gutter-xs);
-//             font-size: 1rem;
-//             display: flex;
-//             justify-content: flex-end;
-//             @media (max-width: var(--mobile)) {
-//                 position: absolute;
-//                 right: 0;
-//                 top: 0;
-//                 margin: 0;
-//             }
-//             i {
-//                 margin-left: 5px;
-//                 @media (max-width: var(--mobile)) {
-//                     span {
-//                         text-transform: none;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
 
 .projects {
   position: relative;
@@ -331,74 +131,38 @@
   justify-content: flex-end;
   margin-top: var(--gutter-xl);
 
+
   .projectsList {
     position: absolute;
     bottom: var(--gutter-xl);
     left: calc(var(--gutter) * 3);
-    z-index: 2;
-    transition: all .2s ease-in-out 0s;
+    z-index: 1;
 
     .projectsItem {
-      display: none;
-      transition: all .2s ease-in-out 0s;
+      line-height: 1.5;
 
-      span {
-        font-size: 0;
-        opacity: 0;
-        line-height: 1;
-        text-transform: uppercase;
-        font-weight: bold;
-        color: var(--color_purple);
-        transition: all .2s ease-in-out 0s;
-      }
-
-      &.show {
-        display: block;
-
-        span {
-          display: inline-block;
-          opacity: .5;
-          font-size: 3rem;
-          line-height: 1.5;
-          transition: all .2s ease-in-out 0s;
-
-          &.active {
-            // background-color: var(--color_purple);
-            opacity: 1;
-            // padding: var(--gutter);
-            // color: var(--color_offWhite);
-            color: var(--color_purple);
-            line-height: 1;
-            font-size: 6rem;
-            // text-shadow: 4px -2px 0 rgba($purple, .2);
-          }
-        }
+      .active {
+        font-size: 5rem;
       }
     }
 
     .navCarouselProject {
       margin-top: var(--gutter);
       position: absolute;
-      top: calc(100% + #{var(--gutter)});
+      bottom: calc(100% + #{var(--gutter)});
       left: 0;
       transform: translateY(-50%);
 
       .previous,
       .next {
-        background-color: var(--color_white);
-        padding: 1rem;
-        box-shadow: 0 0 10px 0 lighten(rgb(11, 11, 11), 40%);
-
         i {
           position: relative;
           top: 5px;
         }
       }
 
-      .previous {
-        i {
-          transform: rotate(-90deg);
-        }
+      .previous i {
+        transform: rotate(-90deg);
       }
 
       .next {
@@ -428,6 +192,16 @@
       background-size: cover;
       transition: opacity .2s ease-in-out;
 
+      &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .6);
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
       &.active {
         opacity: .8;
         visibility: visible;
@@ -440,7 +214,7 @@
 
         span {
           display: inline-block;
-          background-color: var(--color_white);
+          background-color: var(--bg-color);
           padding: 1rem var(--gutter);
           text-transform: uppercase;
           border-radius: 50px;
@@ -506,7 +280,7 @@
             font-size: 1.6rem;
 
             &:last-child {
-              color: var(--color_grey);
+              color: var(--color-grey);
               font-weight: normal;
               font-size: 1.3rem;
             }
@@ -550,8 +324,8 @@
     max-width: var(--desktop);
     width: 90%;
     border-radius: 10px;
-    background-color: var(--color_offWhite);
-    box-shadow: 0 0 10px 0 var(--color_grey);
+    background-color: var(--color-offWhite);
+    box-shadow: 0 0 10px 0 var(--color-grey);
     // overflow: auto;
     padding: var(--gutter-xl);
   }
@@ -561,12 +335,12 @@
     top: 0;
     right: 0;
     transform: translate(50%, -50%);
-    background-color: var(--color_offWhite);
+    background-color: var(--color-offWhite);
     padding: 5px 10px;
     border-radius: 50px;
     display: flex;
     align-items: center;
-    border: 2px solid var(--color_grey);
+    border: 2px solid var(--color-grey);
 
     span {
       font-size: 10px;
@@ -574,7 +348,7 @@
     }
 
     &:hover {
-      color: var(--color_salmon);
+      color: var(--color-salmon);
     }
   }
 }

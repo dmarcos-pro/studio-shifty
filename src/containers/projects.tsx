@@ -30,12 +30,12 @@ const Projects = () => {
   const maxStep = data.projects.all.length - 1
 
   useEffect(() => {
-    var brand = data.projects.all[0].id
+    const brand = data.projects.all[0].id
     setStep({
       id: brand,
       i: 0,
     })
-  }, [data.projects.all])
+  }, [setStep])
 
   useEffect(() => {
     let interval: NodeJS.Timeout
@@ -48,10 +48,10 @@ const Projects = () => {
             newIndex = 0
           }
 
-          let nextStepId = data.projects.all[newIndex].id
+          const nextStepId = data.projects.all[newIndex].id
           return { id: nextStepId, i: newIndex }
         })
-      }, 3000)
+      }, 4000)
     }
 
     return () => {
@@ -59,7 +59,7 @@ const Projects = () => {
         clearInterval(interval)
       }
     }
-  }, [activeInterval])
+  }, [activeInterval, maxStep])
 
   const nextProject = () => {
     setActiveInterval(false)
@@ -122,7 +122,11 @@ const Projects = () => {
     window.addEventListener('scroll', handleScroll)
 
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [ref.title])
+
+  const getImage = (item: any) => {
+    return require(`../../public/images/project/mini/${item.images.miniature}`)
+  }
 
   return (
     <section>
@@ -138,12 +142,12 @@ const Projects = () => {
       <div className={`${hp.projects}`}>
         <div className={`${hp.projectsList}`}>
           {data.projects.all.map((item, index) => {
-            const showIndices = getShowIndices()
-            const isShow = showIndices.includes(index)
+            // const showIndices = getShowIndices()
+            // const isShow = showIndices.includes(index)
             return (
               <div
                 key={`project-title-${index}`}
-                className={`${hp.projectsItem} ${isShow ? hp.show : ''}`}
+                className={`${hp.projectsItem}`}
                 onClick={() => { selectProject(index) }}
               >
                 <span className={`${step.i === index ? hp.active : ''}`}>{item.brand}</span>
@@ -173,7 +177,7 @@ const Projects = () => {
         <div className={`${hp.projectsPicture} linkProject`}>
           {step.id &&
             data.projects.all.map((item, index) => {
-              const img = require(`../../public/images/project/mini/${item.images.miniature}`)
+              const img = getImage(item)
               return (
                 <a
                   key={`project-mini-${index}`}

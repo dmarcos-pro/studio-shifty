@@ -8,6 +8,7 @@ type Props = {
     default?: boolean
     url: string
     children: React.ReactNode
+    className?: React.ReactNode
 }
 
 const Link = (props: Props) => {

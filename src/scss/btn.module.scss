@@ -5,13 +5,14 @@
 .btn {
   padding: 1.3rem 1.5rem 1.1rem 1.5rem;
   font-size: 1.2rem;
-  border-radius: 10px;
+  border-radius: 50px;
   text-transform: uppercase;
   display: inline-block;
   text-decoration: none;
   transition: all .3s ease-in-out 0s;
   display: inline-flex;
   font-weight: bold;
+  border: 2px solid var(--content-color);
 
   @media (max-width: var(--tablet)) {
     padding: 1rem 1rem .9rem 1rem;
@@ -23,15 +24,16 @@
   }
 
   &:hover {
-    color: var(--color_salmon);
-    border-color: var(--color_salmon);
+    color: var(--color-salmon);
+    border-color: var(--color-salmon);
 
     svg {
       animation: moveRight 1s ease-in-out infinite;
 
       path {
-        fill: var(--color_salmon);
-        stroke: var(--color_salmon);
+        transition: all .3s ease-in-out 0s;
+        fill: var(--color-salmon);
+        stroke: var(--color-salmon);
       }
     }
   }
@@ -41,6 +43,11 @@
     position: relative;
     left: 0;
     transition: all .3s ease-in-out;
+
+    path {
+      fill: var(--content-color);
+      stroke: var(--content-color);
+    }
   }
 }
 
@@ -49,6 +56,21 @@ $color in $var-colorsBtn {
   .#{$class} {
     border: 2px solid $color;
     color: $color;
+
+    svg path {
+      fill: $color;
+      stroke: $color;
+    }
+
+    &:hover {
+      border: 2px solid var(--content-color);
+      color: var(--content-color);
+
+      svg path {
+        fill: var(--content-color);
+        stroke: var(--content-color);
+      }
+    }
   }
 }
 
@@ -72,11 +94,11 @@ $color in $var-colorsBtn {
 }
 
 .remove {
-  background-color: var(--color_red);
-  color: var(--color_white);
+  background-color: var(--color-red);
+  color: var(--color-white);
 }
 
 .add {
-  background-color: var(--color_blue);
-  color: var(--color_white);
+  background-color: var(--color-blue);
+  color: var(--color-white);
 }

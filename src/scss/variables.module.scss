@@ -5,12 +5,15 @@ $nb-column-tablet : 6 !default;
 $nb-column-mobile : 3 !default;
 $ie : .01px;
 
-$var-colorsBtn : ('white' : var(--color_beige),
-  'blue' : var(--color_blue),
-  'red' : var(--color_red)) !default;
+$var-colorsBtn : ('white' : var(--color-beige),
+  'blue' : var(--color-blue),
+  'grey' : var(--color-grey),
+  'cyan' : var(--color-cyan),
+  'salmon' : var(--color-salmon),
+  'red' : var(--color-red)) !default;
 
 
-$var-colors : ('blue' : var(--color_blue),
-  'salmon' : var(--color_salmon),
-  'orange' : var(--color_orange),
-  'offWhite' : var(--color_offWhite)) !default;
+$var-colors : ('blue' : var(--color-blue),
+  'salmon' : var(--color-salmon),
+  'orange' : var(--color-orange),
+  'offWhite' : var(--color-offWhite)) !default;

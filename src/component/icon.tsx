@@ -9,15 +9,15 @@ const Icon = (props: Props) => {
     const icon = props.value;
     return (
         <i>
-            {props.children ? <span>{props.children}</span> : null}
+            {props.children && <span>{props.children}</span>}
             {icon === "arrow" && (
                 <svg width="14" height="10" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11 16L18 9M18 9L11 2M18 9L2 9" stroke="#FCC430" strokeWidth="2.41667" strokeLinecap="round" strokeLinejoin="round"></path>
+                    <path d="M11 16L18 9M18 9L11 2M18 9L2 9" stroke="#aaa" strokeWidth="2.41667" strokeLinecap="round" strokeLinejoin="round"></path>
                 </svg>
             )}
             {icon === "bigArrow" && (
                 <svg width="20" height="20" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11 16L18 9M18 9L11 2M18 9L2 9" stroke="#FCC430" strokeWidth="2.41667" strokeLinecap="round" strokeLinejoin="round"></path>
+                    <path d="M11 16L18 9M18 9L11 2M18 9L2 9" stroke="#aaa" strokeWidth="2.41667" strokeLinecap="round" strokeLinejoin="round"></path>
                 </svg>
             )}
             {icon === "angleRight" && (
@@ -32,7 +32,7 @@ const Icon = (props: Props) => {
             )}
             {icon === "quote" && (
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="28.571" viewBox="0 0 40 28.571">
-                    <path id="Icon_material-format-quote" data-name="Icon material-format-quote" d="M10.357,39.071h8.571l5.714-11.429V10.5H7.5V27.643h8.571Zm22.857,0h8.571L47.5,27.643V10.5H30.357V27.643h8.571Z" transform="translate(-7.5 -10.5)" fill="#fcc430" />
+                    <path id="Icon_material-format-quote" data-name="Icon material-format-quote" d="M10.357,39.071h8.571l5.714-11.429V10.5H7.5V27.643h8.571Zm22.857,0h8.571L47.5,27.643V10.5H30.357V27.643h8.571Z" transform="translate(-7.5 -10.5)" fill="#aaa" />
                 </svg>
             )}
             {icon === "close" && (

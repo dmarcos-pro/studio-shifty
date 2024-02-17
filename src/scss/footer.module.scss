@@ -1,9 +1,17 @@
 @import './variables.module.scss';
 
-footer {
-  .grid {
-    padding-top: 5rem;
+.footer {
+  background-color: var(--bg-footer);
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+  border-top: 1px solid var(--color-darkgrey);
 
+  p {
+    font-size: 1.2rem;
+    color: var(--color-grey);
+  }
+
+  .grid {
     @media (max-width: var(--tablet)) {
       flex-wrap: wrap;
       padding-top: 0;
@@ -21,6 +29,11 @@ footer {
 
       >p {
         margin-bottom: var(--gutter-xs);
+
+        &:first-child {
+          color: var(--color-white);
+          font-size: 1.5rem;
+        }
       }
 
       &:first-child,
@@ -34,8 +47,6 @@ footer {
 
       &:first-child {
         p {
-          color: lighten(rgb(67, 64, 82), 30%);
-          font-size: 1.2rem;
 
           &.currentYear {
             font-size: 1rem;
@@ -56,6 +67,7 @@ footer {
 
       p {
         font-size: 1.2rem;
+        color: var(--color-grey);
       }
 
       a {

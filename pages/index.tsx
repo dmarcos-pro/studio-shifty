@@ -6,7 +6,7 @@ import Head from "./head"
 
 // Importez les composants nécessaires pour la page Page
 import Header from '@container/header'
-import HeroBanner from '@container/heroBanner'
+import HeroBanner from '@container/heroBanner2'
 import Presentation from '@container/presentation'
 import Services from '@container/services'
 import Projects from '@container/projects'
@@ -18,8 +18,8 @@ const Page = () => {
       <Head>Le studio Shifty</Head>
       <HeroBanner />
       <main>
-        <Presentation />
         <Services />
+        <Presentation />
         <Projects />
         <Feedback />
       </main>

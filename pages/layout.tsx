@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
+
 // container
 import Header from '@container/header'
 import Footer from '@container/footer'
+import Icon from '@component/icon'
 
 // CSS
-import common from "@scss/common.module.scss";
+import common from "@scss/common.module.scss"
 
 export default function RootLayout({
   children,
@@ -12,10 +14,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [hovered, setHovered] = useState(false)
-  const [hoveredProject, setHoveredProject] = useState(false)
+  const [hovered, setHovered] = useState<boolean>(false)
+  const [hoveredProject, setHoveredProject] = useState<boolean>(false)
 
-  const handleMouseMove = (event:any) => {
+  const [themeMode, setThemeMode] = useState<string>('dark')
+
+  const handleMouseMove = (event: any) => {
     const { clientX, clientY } = event;
     setMousePosition({ x: clientX, y: clientY })
   }
@@ -50,8 +54,12 @@ export default function RootLayout({
     }
   }, [])
 
+  const handleColor = () => {
+    setThemeMode(themeMode === "dark" ? "light" : "dark")
+  }
+
   return (
-    <div className={`App ${hovered ? common.hovered : ""} ${hoveredProject ? common.hoveredProject : ""}`} onMouseMove={handleMouseMove}>
+    <div className={`App ${themeMode} ${hovered ? common.hovered : ""} ${hoveredProject ? common.hoveredProject : ""}`} onMouseMove={handleMouseMove}>
       <span
         className={`${common.mouse}`}
         style={{
@@ -61,6 +69,12 @@ export default function RootLayout({
       />
       <Header />
       {children}
+      <div
+        className={`${common.changeMode} ${themeMode === "dark" ? common.darkMode : ''}`}
+        onClick={handleColor}
+      >
+        <span></span>
+      </div>
       <Footer />
     </div>
   )
