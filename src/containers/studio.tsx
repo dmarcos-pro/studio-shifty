@@ -12,14 +12,14 @@ const Studio = () => {
         <div className={`${article.studio}`}>
             <section>
                 <aside className={`${common.container}`}>
-                    <h2 dangerouslySetInnerHTML={{ __html: data.about_us.story.title }} />
-                    <div dangerouslySetInnerHTML={{ __html: data.about_us.story.content }} />
+                    <h2 dangerouslySetInnerHTML={{ __html: data.about.story.title }} />
+                    <div dangerouslySetInnerHTML={{ __html: data.about.story.content }} />
                 </aside>
             </section>
             <section>
                 <aside className={`${common.container}`}>
-                    <h2 dangerouslySetInnerHTML={{ __html: data.about_us.vision.title }} />
-                    <div dangerouslySetInnerHTML={{ __html: data.about_us.vision.content }} />
+                    <h2 dangerouslySetInnerHTML={{ __html: data.about.vision.title }} />
+                    <div dangerouslySetInnerHTML={{ __html: data.about.vision.content }} />
                 </aside>
             </section>
         </div>

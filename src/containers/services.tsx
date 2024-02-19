@@ -2,6 +2,8 @@
 import React, { useState, useRef, useEffect } from "react"
 // import { useSwipeable } from 'react-swipeable'
 import data from '../content.json'
+import { useQuery } from 'react-query'
+import { fetchServices } from '../../api/index'
 
 import Service from "@component/service"
 // import Modal from './modal'
@@ -11,6 +13,12 @@ import common from '@scss/common.module.scss'
 import hp from '@scss/homepage.module.scss'
 import grid from '@scss/grid.module.scss'
 import animation from '@scss/animation.module.scss'
+
+type Service = {
+  id: string;
+  category: string;
+  name: string;
+}
 
 const Services = () => {
 
@@ -44,6 +52,8 @@ const Services = () => {
 
   }, [ref.title])
 
+  const { data: services } = useQuery('services', () => fetchServices())
+
   return (
     <section className={`${hp.services}`}>
       <div className={`${common.container} ${hp.serviceContainer}`}>
@@ -56,7 +66,7 @@ const Services = () => {
         </div>
 
         <div className={`${hp.serviceItems} ${grid.hasGutter} ${grid.grid4} ${grid.lg2} ${grid.sm1}`}>
-          {data.services.offer.map((service, index) => {
+          {services && services.map((service: Service, index: number) => {
             return (
               <Service
                 key={`offer-${service.id}`}

@@ -1,9 +1,12 @@
 "use client"
 import React, { useState, useEffect, useRef } from "react"
-import data from '../content.json'
+// import data from '../content.json'
 
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/router'
+
+import { useQuery } from 'react-query'
+import { fetchServices, fetchNav } from '../../api/index'
 
 // import Link from '@component/link'
 import Link from 'next/link'
@@ -13,6 +16,7 @@ import Icon from '@component/icon'
 // CSS
 import styles from '@scss/header.module.scss'
 import cta from '@scss/link.module.scss'
+import internal from "stream"
 
 type SubMenuItem = {
   name: string
@@ -25,6 +29,28 @@ type SubMenu = {
   width: number | null
   size: number | null
   items: any[]
+}
+
+const baseUrlServer = process.env.SERVER_URL as string
+
+type Service = {
+  id: string
+  name: string
+  category: string
+  title: string
+  resume: string
+  content_title: string
+  content_text: string
+  picture_url: string
+  picture_type: string
+}
+
+type Nav = {
+  category: string
+  submenu: boolean
+  name: string
+  id: number
+  link: string
 }
 
 const Header = () => {
@@ -65,7 +91,12 @@ const Header = () => {
     }
   }, [])
 
-  const navigationItems = data.navigation.filter(item => item.category.includes('navigation'))
+  // const [services, setServices] = useState<Service[]>([]);
+  // const [nav, setNav] = useState<Nav[]>([]);
+
+  const { data: nav } = useQuery('nav', () => fetchNav('navigation'))
+
+  const { data: services } = useQuery('services', () => fetchServices())
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
@@ -83,7 +114,7 @@ const Header = () => {
   } => {
     const allSubMenu: SubMenuItem[] = []
     if (id === "services") {
-      data.services.offer.forEach((services) => {
+      services.forEach((services: Service) => {
         if (!allSubMenu.some(sub => sub.name === services.name)) {
           allSubMenu.push({ name: services.name, id: services.id })
         }
@@ -112,7 +143,7 @@ const Header = () => {
       ref={headerRef}
     >
       <nav className={menuOpen ? styles.navOpen : ''}>
-        {navigationItems.map((item, index) => {
+        {nav && nav.map((item: Nav, index: number) => {
           return (
             <div key={`navHeader-${index}`}>
               {item.submenu ? (

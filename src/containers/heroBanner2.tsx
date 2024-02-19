@@ -1,7 +1,8 @@
 "use client"
 import React, { useState, useEffect, useRef } from "react"
 import data from '../content.json'
-
+import { useQuery } from 'react-query'
+import { fetchProjects } from '../../api/index'
 
 import Btn from "@component/btn"
 import Link from "@component/link"
@@ -15,6 +16,13 @@ import banner from '@scss/heroBanner.module.scss'
 import common from '@scss/common.module.scss'
 import animation from '@scss/animation.module.scss'
 
+const name = process.env.NAME as string
+
+type Project = {
+  id: string
+  brand: string
+}
+
 const HeroBanner = () => {
   const counterRef = useRef<HTMLDivElement>(null)
   const [counter, setCounter] = useState<number>(0)
@@ -23,75 +31,74 @@ const HeroBanner = () => {
   const [increment, setIncrement] = useState<boolean>(true)
   const [mobile, setMobile] = useState<boolean>(false)
 
+  const { data: projects, isLoading, isError } = useQuery('projects', () => fetchProjects())
 
   useEffect(() => {
-    const imgWidth = data.projects.all.length * (sizeImgRef + marginRef)
-    const sizeCounterBox = counterRef.current ? counterRef?.current?.clientWidth : 0
+    if (!isLoading && !isError && projects) {
+      const imgWidth = projects.length * (sizeImgRef + marginRef)
+      const sizeCounterBox = counterRef.current ? counterRef?.current?.clientWidth : 0
 
-    const interval = setInterval(() => {
-      if (increment) {
-        setCounter((prevCounter) => prevCounter + 1)
-        if (counter >= (imgWidth - sizeCounterBox)) {
-          setIncrement(false)
+      const interval = setInterval(() => {
+        if (increment) {
+          setCounter((prevCounter) => prevCounter + 1)
+          if (counter >= (imgWidth - sizeCounterBox)) {
+            setIncrement(false)
+          }
+        } else {
+          setCounter((prevCounter) => prevCounter - 1)
+          if (counter <= 0) {
+            setIncrement(true)
+          }
         }
-      } else {
-        setCounter((prevCounter) => prevCounter - 1)
-        if (counter <= 0) {
-          setIncrement(true)
-        }
+      }, 30)
+
+      const updateDevice = () => {
+        setMobile(window.innerWidth <= 768 ? true : false)
       }
-    }, 30)
+      updateDevice()
+      window.addEventListener('resize', updateDevice)
 
-    const updateDevice = () => {
-      setMobile(window.innerWidth <= 768 ? true : false)
+      return () => {
+        window.removeEventListener('resize', updateDevice)
+        clearInterval(interval)
+      }
     }
-    updateDevice()
-    window.addEventListener('resize', updateDevice)
+  }, [isLoading, isError, projects, counter, sizeImgRef, increment])
 
-    return () => {
-      window.removeEventListener('resize', updateDevice)
-      clearInterval(interval)
-
-    }
-  }, [counter, sizeImgRef, increment])
-
-  const contactItems = data.navigation.filter(item => item.id.includes('contact'))
-  const getImage = (item: any) => {
-    return require(`@images/project/logo/${item.images.logo}`);
+  const getImage = (product: any) => {
+    return require(`@images/project/logo/${product.id}.png`);
   }
 
   return (
     <div className={`${banner.heroBanner}`}>
       <div className={`${common.containerXs} ${common.txtCenter} ${banner.title} ${animation.animated} ${animation.delay5} ${animation.fadeUp}`}>
         <figure className={banner.logo}>
-          <Image width={120} height={80} layout="responsive" src={logo.src} alt={`${data.name}`} />
+          <Image
+            width={120} height={80} style={{ width: '120px', height: 'auto' }}
+            src={logo.src}
+            alt={`Logo ${name}`}
+          />
         </figure>
         <h1 dangerouslySetInnerHTML={{ __html: data.catch_phrase }} />
-        <p dangerouslySetInnerHTML={{ __html: data.about_us.short }} />
+        <p dangerouslySetInnerHTML={{ __html: data.baseline }} />
         <div className={common.my4}>
-          {contactItems.map((item, index) => {
-            return (
-              <React.Fragment key={`navHeader-${index}`}>
-                <Btn icon url={`${item.link}`}>
-                  {item.name}
-                </Btn>
-              </React.Fragment>
-            )
-          })}
+          <Btn icon url={`${data.contact.url}`}>
+            {data.contact.content}
+          </Btn>
         </div>
         <div className={`${banner.ref} ${common.my4}`} ref={counterRef}>
           <div className={banner.counter} >
             <div style={{ left: `-${counter}px` }}>
-              {data.projects.all.map((item, index) => {
-                const img = getImage(item)
+              {projects && projects.map((project: Project, index: number) => {
+                const img = getImage(project)
                 return (
-                  <figure key={`ref-${item.id}-${index}`} style={{ flex: `1 0 ${sizeImgRef}px`, marginRight: marginRef }}>
-                    <Link url={`/projets/${item.id}`} default>
+                  <figure key={`ref-${project.id}-${index}`} style={{ flex: `1 0 ${sizeImgRef}px`, marginRight: marginRef }}>
+                    <Link url={`/projets/${project.id}`} default>
                       <Image
                         height={48}
                         width={sizeImgRef}
                         src={img}
-                        alt={item.brand}
+                        alt={project.brand}
                       />
                     </Link>
                   </figure>

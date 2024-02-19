@@ -3,7 +3,9 @@ import path from 'path'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    customKey: 'customKey',
+    NAME: 'Studio Shifty',
+    SHORT_NAME: 'Shifty',
+    SERVER_URL: 'http://localhost:3001',
   },
   webpack: (config, { isServer }) => {
     const currentDir = new URL(import.meta.url).pathname

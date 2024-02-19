@@ -19,6 +19,12 @@ type Refs = {
   cta: RefObject<HTMLDivElement>
 }
 
+type Nav = {
+  link: string
+  name: string
+}
+const baseUrlServer = process.env.SERVER_URL as string
+
 const Presentation = () => {
 
   const [isVisible, setIsVisible] = useState({
@@ -54,9 +60,6 @@ const Presentation = () => {
 
   })
 
-  const studioItem = data.navigation.find(item => item.id === 'studio')
-  const studioLink = studioItem?.link ?? ""
-
   return (
     <section className={`${hp.presentation}`}>
       <div
@@ -64,14 +67,14 @@ const Presentation = () => {
         ref={ref.box}
       >
         <div className={`${common.txtCenter}`}>
-          <span className={`${common.tag}`} dangerouslySetInnerHTML={{ __html: data.about_us.tag }} />
-          <div dangerouslySetInnerHTML={{ __html: data.about_us.desc }} />
+          <span className={`${common.tag}`} dangerouslySetInnerHTML={{ __html: data.about.tag }} />
+          <div dangerouslySetInnerHTML={{ __html: data.about.desc }} />
           <div
             className={`${common.boxCta} ${animation.fadeUp} ${isVisible.cta ? animation.animated : ''}`}
             ref={ref.cta}
           >
-            <Btn rotate size="large" url={`${studioLink}`}>
-              {data.about_us.cta}
+            <Btn rotate size="large" url="/le-studio">
+              {data.about.cta}
             </Btn>
           </div>
         </div>
