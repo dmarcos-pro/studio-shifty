@@ -1,67 +1,27 @@
 "use client"
 import React, { useState, useEffect, useRef } from "react"
-// import data from '../content.json'
+import type { HeaderNav, HeaderSubMenu, HeaderSubMenuItem, HeaderService, HeaderSubMenuMap } from "@type/container"
 
 import { usePathname } from 'next/navigation'
-import { useRouter } from 'next/router'
 
 import { useQuery } from 'react-query'
-import { fetchServices, fetchNav } from '../../api/index'
+import { fetchServices, fetchNav } from '@api/index'
 
-// import Link from '@component/link'
 import Link from 'next/link'
-import Btn from '@component/btn'
 import Icon from '@component/icon'
 
 // CSS
 import styles from '@scss/header.module.scss'
 import cta from '@scss/link.module.scss'
-import internal from "stream"
-
-type SubMenuItem = {
-  name: string
-  id: string
-}
-type SubMenu = {
-  active: boolean
-  top: number | null
-  left: number | null
-  width: number | null
-  size: number | null
-  items: any[]
-}
-
-const baseUrlServer = process.env.SERVER_URL as string
-
-type Service = {
-  id: string
-  name: string
-  category: string
-  title: string
-  resume: string
-  content_title: string
-  content_text: string
-  picture_url: string
-  picture_type: string
-}
-
-type Nav = {
-  category: string
-  submenu: boolean
-  name: string
-  id: number
-  link: string
-}
 
 const Header = () => {
-  const router = useRouter()
   const pathname = usePathname()
 
   const [scrolled, setScrolled] = useState<boolean>(false)
   const [scrollbar, setScrollbar] = useState<number>(0)
   const [desktop, setDesktop] = useState<boolean>(true)
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
-  const [subMenu, setSubMenu] = useState<SubMenu>({
+  const [subMenu, setSubMenu] = useState<HeaderSubMenu>({
     active: false,
     top: null,
     left: null,
@@ -91,9 +51,6 @@ const Header = () => {
     }
   }, [])
 
-  // const [services, setServices] = useState<Service[]>([]);
-  // const [nav, setNav] = useState<Nav[]>([]);
-
   const { data: nav } = useQuery('nav', () => fetchNav('navigation'))
 
   const { data: services } = useQuery('services', () => fetchServices())
@@ -110,11 +67,11 @@ const Header = () => {
     left: number
     width: number
     size: number
-    items: SubMenuItem[]
+    items: HeaderSubMenuItem[]
   } => {
-    const allSubMenu: SubMenuItem[] = []
+    const allSubMenu: HeaderSubMenuItem[] = []
     if (id === "services") {
-      services.forEach((services: Service) => {
+      services.forEach((services: HeaderService) => {
         if (!allSubMenu.some(sub => sub.name === services.name)) {
           allSubMenu.push({ name: services.name, id: services.id })
         }
@@ -143,7 +100,7 @@ const Header = () => {
       ref={headerRef}
     >
       <nav className={menuOpen ? styles.navOpen : ''}>
-        {nav && nav.map((item: Nav, index: number) => {
+        {nav && nav.map((item: HeaderNav, index: number) => {
           return (
             <div key={`navHeader-${index}`}>
               {item.submenu ? (
@@ -172,7 +129,7 @@ const Header = () => {
               transform: subMenu.width !== null && subMenu.size !== null ? `translateX(-${(subMenu.width - subMenu.size) / 2}px)` : undefined
             }}
           >
-            {subMenu.items.map((item: any, index) => {
+            {subMenu.items.map((item: HeaderSubMenuMap, index) => {
               return (
                 <Link href={`/services/${item.id}`} key={index} className={`link ${pathname === `/services/${item.id}` ? styles.activeLink : ''}`} onClick={(e) => { setSubMenu(prevSubMenu => ({ ...prevSubMenu, active: false })) }}>
                   {item.name}

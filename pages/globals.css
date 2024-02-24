@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --color-cyan: rgb(139, 179, 255);
   --color-black: rgb(11, 11, 11);
@@ -9,6 +13,7 @@
   --color-salmon: rgb(230, 113, 113);
   --color-darkblue: rgb(14, 17, 26);
   --color-darkgrey: rgb(27, 27, 27);
+  --color-lightgrey: rgb(219, 219, 219);
   --color-pink: rgb(247, 209, 235);
   --color-yellow: rgb(253, 201, 104);
 
@@ -23,23 +28,21 @@
   
   --path-img: '/images/';
   --path-font: '/font/';
-
 }
 
 .light {
   --content-color: var(--color-black);
-  --bg-color: var(--color-offWhite);
-  --bg-header: rgba(245, 245, 245, .8);
+  --bg-color: var(--color-lightgrey);
+  --bg-header: rgba(245, 245, 245, .1);
   --bg-nav: var(--color-beige);
   --bg-footer: var(--color-black);
 }
 .dark {
   --content-color: var(--color-offWhite);
   --bg-color: var(--color-darkblue);
-  --bg-header: rgba(11, 11, 11, .3);
+  --bg-header: rgba(11, 11, 11, .1);
   --bg-nav: rgba(245,245,245,.2);
   --bg-footer: var(--color-darkblue);
-  /* --btn-default: var(--color-darkblue); */
 }
 
 
@@ -121,6 +124,7 @@ h1, h2, h3 {
   font-weight: bold;
   margin: var(--gutter) 0;
   line-height: 1.2;
+  color: var(--content-color);
 }
 h1:last-child, h2:last-child, h3:last-child {
   margin-bottom: 0;

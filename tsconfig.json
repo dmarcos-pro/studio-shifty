@@ -23,12 +23,15 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
+      // "@/*": ["./src/*"],
       "@component/*": ["./src/component/*"],
-      "@container/*": ["./src/containers/*"],
-      "@type/*": ["./src/type/*"]
+      "@container/*": ["./src/container/*"],
+      "@api/*": ["./api/*"],
+      "@type/*": ["./src/type/*"],
+      "@scss/*": ["./src/scss/*"],
+      "@images/*": ["./public/images/*"],
+      "@video/*": ["./public/video/*"],
+      "@contentJson": ["./src/content.json"]
     }
   },
   "include": [

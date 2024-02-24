@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 // container
 import Header from '@container/header'
 import Footer from '@container/footer'
-import Icon from '@component/icon'
 
 // CSS
 import common from "@scss/common.module.scss"

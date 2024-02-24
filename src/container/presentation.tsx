@@ -1,8 +1,8 @@
 "use client"
-import React, { useRef, useEffect, useState } from "react"
 
-// CONTENT JSON
-import data from '../content.json'
+import React, { useRef, useEffect, useState } from "react"
+import { type PresentationRefs } from "@type/container"
+import content from '@contentJson'
 
 // Module
 import Btn from "@component/btn"
@@ -12,19 +12,6 @@ import common from '@scss/common.module.scss'
 import hp from '@scss/homepage.module.scss'
 import animation from '@scss/animation.module.scss'
 
-type RefObject<T> = React.RefObject<T>
-
-type Refs = {
-  box: RefObject<HTMLDivElement>
-  cta: RefObject<HTMLDivElement>
-}
-
-type Nav = {
-  link: string
-  name: string
-}
-const baseUrlServer = process.env.SERVER_URL as string
-
 const Presentation = () => {
 
   const [isVisible, setIsVisible] = useState({
@@ -32,7 +19,7 @@ const Presentation = () => {
     cta: false
   })
 
-  const ref: Refs = {
+  const ref: PresentationRefs = {
     box: useRef<HTMLDivElement>(null),
     cta: useRef<HTMLDivElement>(null),
   }
@@ -67,14 +54,14 @@ const Presentation = () => {
         ref={ref.box}
       >
         <div className={`${common.txtCenter}`}>
-          <span className={`${common.tag}`} dangerouslySetInnerHTML={{ __html: data.about.tag }} />
-          <div dangerouslySetInnerHTML={{ __html: data.about.desc }} />
+          <span className={`${common.tag}`} dangerouslySetInnerHTML={{ __html: content.about.tag }} />
+          <div dangerouslySetInnerHTML={{ __html: content.about.desc }} />
           <div
             className={`${common.boxCta} ${animation.fadeUp} ${isVisible.cta ? animation.animated : ''}`}
             ref={ref.cta}
           >
             <Btn rotate size="large" url="/le-studio">
-              {data.about.cta}
+              {content.about.cta}
             </Btn>
           </div>
         </div>

@@ -1,14 +1,14 @@
-type Children = {
+export type Children = {
   children: React.ReactNode
 }
 
-type ActiveTaskPropsChildren = {
+export type ActiveTaskPropsChildren = {
     category: string
     name: string
     price: number
     feedback: string
 }
-type TaskPropsChildren = {
+export type TaskPropsChildren = {
   selected: boolean
   update: (number: number) => void
   number: number
@@ -18,5 +18,3 @@ type TaskPropsChildren = {
   category: string
   image: string
 }
-
-export type { Children, ActiveTaskPropsChildren, TaskPropsChildren }

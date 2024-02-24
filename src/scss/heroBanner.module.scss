@@ -1,7 +1,7 @@
 @import './variables.module.scss';
 
 .heroBanner {
-  padding-top: calc(var(--gutter-xl) * 3);
+  padding-top: 15rem;
   background: var(--bg-color);
   color: var(--content-color);
 
@@ -28,7 +28,6 @@
 }
 
 .bottom {
-  // background-color: var(--color-offWhite);
   display: flex;
   align-items: center;
   position: relative;
@@ -108,7 +107,6 @@
 
 .ref {
   overflow: hidden;
-  // margin-left: calc(40rem + var(--gutter));
 
   @media (max-width: var(--laptop)) {
     margin-left: 0;

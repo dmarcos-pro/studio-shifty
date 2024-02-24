@@ -1,22 +1,18 @@
-import React from "react";
+import { type ModalProps } from '@type/container'
 
-import hp from '@scss/homepage.module.scss';
+// CSS
+import styles from '@scss/homepage.module.scss'
 
-type Props = {
-  update: (boolean: boolean) => void
-  children: React.ReactNode
-}
-
-const Modal = (props: Props) => {
+const Modal = (props: ModalProps) => {
   const closeModal = () => {
     props.update(false);
   }
 
   return (
-    <div className={`${hp.modal}`}>
+    <div className={`${styles.modal}`}>
       <div>
         <span
-          className={`${hp.modalClose}`}
+          className={`${styles.modalClose}`}
           onClick={(e) => { closeModal(); }}
         >
           &#x2715;

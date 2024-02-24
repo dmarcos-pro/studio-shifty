@@ -1,11 +1,7 @@
-import React from "react";
+import React from "react"
+import { type IconProps } from "@type/component"
 
-type Props = {
-    value: string
-    children?: React.ReactNode
-}
-
-const Icon = (props: Props) => {
+const Icon = (props: IconProps) => {
     const icon = props.value;
     return (
         <i>

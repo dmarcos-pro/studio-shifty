@@ -1,7 +1,7 @@
 @import './variables.module.scss';
 
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -9,7 +9,7 @@
   justify-content: center;
   padding: var(--gutter-xs);
   z-index: 3;
-  background-color: var(--bg-color);
+  background-color: var(--bg-header);
 
   nav {
     display: flex;
@@ -124,7 +124,7 @@
 
 .headerScrolled {
   backdrop-filter: blur(6px);
-  background-color: var(--bg-header);
+  background: rgba($color: rgb(11, 11, 11), $alpha: .1);
   position: fixed;
   top: 0;
   left: 0;

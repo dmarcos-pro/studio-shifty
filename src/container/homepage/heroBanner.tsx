@@ -1,8 +1,9 @@
 "use client"
 import React, { useState, useEffect, useRef } from "react"
-import data from '../content.json'
+import { type HeroBannerProject } from "@type/container"
+import content from '@contentJson'
 import { useQuery } from 'react-query'
-import { fetchProjects } from '../../api/index'
+import { fetchProjects } from '@api/index'
 
 import Btn from "@component/btn"
 import Link from "@component/link"
@@ -18,10 +19,7 @@ import animation from '@scss/animation.module.scss'
 
 const name = process.env.NAME as string
 
-type Project = {
-  id: string
-  brand: string
-}
+
 
 const HeroBanner = () => {
   const counterRef = useRef<HTMLDivElement>(null)
@@ -79,17 +77,17 @@ const HeroBanner = () => {
             alt={`Logo ${name}`}
           />
         </figure>
-        <h1 dangerouslySetInnerHTML={{ __html: data.catch_phrase }} />
-        <p dangerouslySetInnerHTML={{ __html: data.baseline }} />
+        <h1 dangerouslySetInnerHTML={{ __html: content.catch_phrase }} />
+        <p dangerouslySetInnerHTML={{ __html: content.baseline }} />
         <div className={common.my4}>
-          <Btn icon url={`${data.contact.url}`}>
-            {data.contact.content}
+          <Btn icon url={`${content.contact.url}`}>
+            {content.contact.content}
           </Btn>
         </div>
         <div className={`${banner.ref} ${common.my4}`} ref={counterRef}>
           <div className={banner.counter} >
             <div style={{ left: `-${counter}px` }}>
-              {projects && projects.map((project: Project, index: number) => {
+              {projects && projects.map((project: HeroBannerProject, index: number) => {
                 const img = getImage(project)
                 return (
                   <figure key={`ref-${project.id}-${index}`} style={{ flex: `1 0 ${sizeImgRef}px`, marginRight: marginRef }}>
@@ -108,10 +106,6 @@ const HeroBanner = () => {
           </div>
         </div>
       </div>
-      {/* <video autoPlay loop id="video" style={{ maxWidth: '100%', height: 'auto' }}>
-        <source src={`../video/hp.mp4`} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video> */}
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react"
+import { type ServiceProps, type ServiceAnim } from "@type/component"
 
 import Icon from "./icon"
 
@@ -11,19 +12,11 @@ import animation from '@scss/animation.module.scss'
 
 const delays = ['delay2', 'delay4', 'delay6', 'delay8']
 
-type Props = {
-  index: number
-  id: string
-  category: string
-  title: string
-}
-type VisibleProps = {
-  box: boolean
-}
 
-const Service = (props: Props) => {
 
-  const [isVisible, setIsVisible] = useState<VisibleProps>({
+const Service = (props: ServiceProps) => {
+
+  const [isVisible, setIsVisible] = useState<ServiceAnim>({
     box: false
   })
 
@@ -60,7 +53,7 @@ const Service = (props: Props) => {
       className={`link ${hp.serviceItem} ${animation[delayClass]} ${animation.fadeUp} ${isVisible.box ? animation.animated : ''}`}
       ref={ref.box}
     >
-      <Link href={`/services#${props.id}`}>
+      <Link href={`/services/${props.id}`}>
         <div>
           <span className={`${common.tag} ${hp.tag}`}>{props.category}</span>
           <h3 dangerouslySetInnerHTML={{ __html: props.title }} />

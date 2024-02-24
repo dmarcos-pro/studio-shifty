@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import data from '../content.json';
+import { type FooterService, type FooterNav } from '@type/container';
+import content from '@contentJson'
 import { useQuery } from 'react-query'
-import { fetchServices, fetchNav } from '../../api/index'
+import { fetchServices, fetchNav } from '@api/index'
 
 import Link from "@component/link";
 import Btn from "@component/btn";
@@ -11,21 +11,9 @@ import Image from 'next/image'
 import logo from '@images/logo.png';
 
 // CSS
-import common from '@scss/common.module.scss';
-import grid from '@scss/grid.module.scss';
-import styles from '@scss/footer.module.scss';
-
-type Service = {
-  id: string
-  name: string
-}
-
-type Nav = {
-  id: string
-  name: string
-  link: string
-  category: string
-}
+import common from '@scss/common.module.scss'
+import grid from '@scss/grid.module.scss'
+import styles from '@scss/footer.module.scss'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -38,14 +26,14 @@ const Footer = () => {
         <div className={`${grid.grid} ${styles.grid}`}>
           <div>
             <figure className={`${styles.logo}`}>
-              <Image width={120} height={80} style={{ width: '120px', height: 'auto' }} src={logo.src} alt={`logo-${data.short_name}`} />
+              <Image width={120} height={80} style={{ width: '120px', height: 'auto' }} src={logo.src} alt={`logo-${content.short_name}`} />
             </figure>
-            <p dangerouslySetInnerHTML={{ __html: data.baseline }} />
-            <p className={styles.currentYear}>{data.short_name} © {currentYear}</p>
+            <p dangerouslySetInnerHTML={{ __html: content.baseline }} />
+            <p className={styles.currentYear}>{content.short_name} © {currentYear}</p>
           </div>
           <div>
-            <p>{data.services.subtitle}</p>
-            {services && services.map((service: Service, index: number) => {
+            <p>{content.services.subtitle}</p>
+            {services && services.map((service: FooterService, index: number) => {
               return <Link key={`serviceFooter-${index}`} url={`${service.id}`}>
                 <span dangerouslySetInnerHTML={{ __html: service.name }} />
               </Link>
@@ -53,7 +41,7 @@ const Footer = () => {
           </div>
           <div>
             <p>Liens utiles</p>
-            {navLegal && navLegal.map((item: Nav, index: number) => {
+            {navLegal && navLegal.map((item: FooterNav, index: number) => {
               return <Link key={`serviceFooter-${index}`} url={`${item.link}`}>
                 <span dangerouslySetInnerHTML={{ __html: item.name }} />
               </Link>

@@ -130,7 +130,7 @@
   display: flex;
   justify-content: flex-end;
   margin-top: var(--gutter-xl);
-
+  min-height: 700px;
 
   .projectsList {
     position: absolute;
@@ -178,8 +178,10 @@
   .projectsPicture {
     flex: 0 1 100%;
     width: 100%;
-    height: 80vh;
-    position: relative;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
     overflow: hidden;
 
     a {

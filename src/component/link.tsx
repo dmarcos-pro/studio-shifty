@@ -1,17 +1,12 @@
-import React from "react";
-import { useRouter } from 'next/router'
+import React from "react"
+import { type LinkProps } from "@type/component"
 
 // CSS
-import cta from '@scss/link.module.scss';
+import cta from '@scss/link.module.scss'
 
-type Props = {
-    default?: boolean
-    url: string
-    children: React.ReactNode
-    className?: React.ReactNode
-}
 
-const Link = (props: Props) => {
+
+const Link = (props: LinkProps) => {
     const defaultLink = props.default ? true : false;
     return (
         <a href={`${props.url}`} className={defaultLink ? "" : `${cta.link} link`}>

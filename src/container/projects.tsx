@@ -1,10 +1,10 @@
 'use client'
-
 import React, { useState, useEffect, useRef } from 'react'
-import data from '../content.json'
+import { type ProjectsContainer, type ProjectsRefs } from '@type/container'
+import content from '@contentJson'
 
 import { useQuery } from 'react-query'
-import { fetchProjects } from '../../api/index'
+import { fetchProjects } from '@api/index'
 
 import Icon from '@component/icon'
 
@@ -13,27 +13,17 @@ import common from '@scss/common.module.scss'
 import animation from '@scss/animation.module.scss'
 import hp from '@scss/homepage.module.scss'
 
-
-type Refs = {
-  title: React.RefObject<HTMLDivElement>;
-}
-
-
-type Project = {
-  id: string
-  brand: string
-}
-
 const Projects = () => {
   const { data: projects, isLoading, isError } = useQuery('projects', () => fetchProjects())
 
   const [activeInterval, setActiveInterval] = useState<boolean>(true)
   const [step, setStep] = useState<{ id: string; i: number }>({ id: "", i: 0 })
   const maxStep = projects ? projects.length - 1 : 0
+  console.log("🚀 ~ Projects ~ projects:", projects)
 
 
   useEffect(() => {
-    const brand = projects[0]?.id
+    const brand = projects && projects[0]?.id
     setStep({
       id: brand,
       i: 0,
@@ -51,7 +41,7 @@ const Projects = () => {
             newIndex = 0
           }
 
-          const nextStepId = projects[newIndex]?.id
+          const nextStepId = projects && projects[newIndex]?.id
           return { id: nextStepId, i: newIndex }
         })
       }, 4000)
@@ -102,7 +92,7 @@ const Projects = () => {
   const [isVisible, setIsVisible] = useState({
     title: false,
   })
-  const ref: Refs = {
+  const ref: ProjectsRefs = {
     title: useRef<HTMLDivElement>(null),
   }
 
@@ -138,13 +128,13 @@ const Projects = () => {
           className={`${common.txtCenter} ${animation.fade3d} ${isVisible.title ? animation.animated : ''}`}
           ref={ref.title}
         >
-          <span className={`${common.tag}`} dangerouslySetInnerHTML={{ __html: data.projects.tag }} />
-          <h2 dangerouslySetInnerHTML={{ __html: data.projects.title }} />
+          <span className={`${common.tag}`} dangerouslySetInnerHTML={{ __html: content.projects.tag }} />
+          <h2 dangerouslySetInnerHTML={{ __html: content.projects.title }} />
         </div>
       </div>
       <div className={`${hp.projects}`}>
         <div className={`${hp.projectsList}`}>
-          {projects && projects.map((project: Project, index: number) => {
+          {projects && projects.map((project: ProjectsContainer, index: number) => {
             return (
               <div
                 key={`project-title-${index}`}
@@ -177,7 +167,8 @@ const Projects = () => {
 
         <div className={`${hp.projectsPicture} linkProject`}>
           {step.id && projects &&
-            projects.map((project: Project, index: number) => {
+            projects.map((project: ProjectsContainer, index: number) => {
+              const tags = JSON.parse(project.tag)
               const img = getImage(project)
               return (
                 <a
@@ -188,11 +179,11 @@ const Projects = () => {
                     backgroundImage: `url(${img.default.src})`,
                   }}
                 >
-                  {/* <div className={hp.projectsTag}>
-                    {item.tag.map((cat, index) => {
+                  <div className={hp.projectsTag}>
+                    {tags.map((cat: string, index: number) => {
                       return <span key={`project-cat-${index}`}>{cat}</span>
                     })}
-                  </div> */}
+                  </div>
                 </a>
               )
             })}

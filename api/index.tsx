@@ -57,3 +57,21 @@ export const fetchNav = async (category: string) => {
     throw error; // Re-lancez l'erreur pour que React Query puisse la gérer
   }
 };
+
+type Service = {
+  id: string
+}
+export const fetchService = async (name: string) => {
+  try {
+    const response = await fetch(`${baseUrlServer}/services`);
+    if (!response.ok) {
+      throw new Error('Erreur lors de la récupération des données des services');
+    }
+    const data = await response.json();
+    const service = data.find((item: Service) => item.id === name)
+    return service;
+  } catch (error) {
+    console.error('Erreur lors du fetch /services :', error);
+    throw error; // Re-lancez l'erreur pour que React Query puisse la gérer
+  }
+};

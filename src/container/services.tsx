@@ -1,24 +1,17 @@
 "use client"
 import React, { useState, useRef, useEffect } from "react"
-// import { useSwipeable } from 'react-swipeable'
-import data from '../content.json'
+import { type ServicesContainer } from "@type/container"
+import content from '@contentJson'
 import { useQuery } from 'react-query'
-import { fetchServices } from '../../api/index'
+import { fetchServices } from '@api/index'
 
 import Service from "@component/service"
-// import Modal from './modal'
 
 // CSS 
 import common from '@scss/common.module.scss'
 import hp from '@scss/homepage.module.scss'
 import grid from '@scss/grid.module.scss'
 import animation from '@scss/animation.module.scss'
-
-type Service = {
-  id: string;
-  category: string;
-  name: string;
-}
 
 const Services = () => {
 
@@ -61,12 +54,12 @@ const Services = () => {
           className={`${common.txtCenter} ${animation.fade3d} ${animation.animated} ${animation.delay20}`}
           ref={ref.title}
         >
-          <span className={`${common.tag} ${common.txt_salmon}`}>{data.services.tag}</span>
-          <h2>{data.services.title}</h2>
+          <span className={`${common.tag} ${common.txt_salmon}`}>{content.services.tag}</span>
+          <h2>{content.services.title}</h2>
         </div>
 
         <div className={`${hp.serviceItems} ${grid.hasGutter} ${grid.grid4} ${grid.lg2} ${grid.sm1}`}>
-          {services && services.map((service: Service, index: number) => {
+          {services && services.map((service: ServicesContainer, index: number) => {
             return (
               <Service
                 key={`offer-${service.id}`}
@@ -78,7 +71,6 @@ const Services = () => {
             )
           })}
         </div>
-
       </div>
     </section >
   )
